@@ -1,0 +1,167 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Legislativas 2019",
+    "description": "Dados usados pela plataforma PPT para as legislativas 2019",
+    "type": "object",
+    "properties": {
+      "manifestos": {
+        "description": "Programas eleitorais",
+        "type": "object",
+        "properties": {
+            "acronym": {
+                "description": "Contém o programa eleitoral do partido 'acronym'",
+                "type": "object",
+                "properties": {
+                    "sections": {
+                        "description": "Contém os capítulos do programa eleitoral",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "content": {
+                                    "description": "Contém cada parágrafo, em formato html, do capítulo",
+                                    "type": "object",
+                                    "properties": {
+                                        "html": {
+                                            "type": "string"
+                                        },
+                                        "position": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [ "html", "position" ]
+                                },
+                                "position": {
+                                    "type": "integer"
+                                },
+                                "title": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [ "content", "position", "title" ]
+                        }
+                    },
+                    "title": {
+                        "description": "Título do programa eleitoral",
+                        "type": "string"
+                    }
+                },
+                "required": [ "sections", "title" ]
+            }
+        }
+      },
+      "parties": {
+        "description": "Informação dos Partidos / Coligaçōes",
+        "type": "object",
+        "properties": {
+            "acronym": {
+                "description": "Informaçã do Partido / Coligaçāo 'acronym'",
+                "type": "object",
+                "properties": {
+                    "candidates": {
+                        "district": {
+                            "type": "object",
+                            "properties": {
+                                "main": {
+                                    "description": "Lista de todos os candidatos",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "biography": {
+                                                "type": "string"
+                                            },
+                                            "biography_source": {
+                                                "type": "string"
+                                            },
+                                            "is_lead_candidate": {
+                                                "type": "boolean"
+                                            },
+                                            "link_parlamento": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "photo": {
+                                                "description": "Nome do ficheiro na pasta 'cabeca_de_lista_fotos'",
+                                                "type": "string"
+                                            },
+                                            "photo_source": {
+                                                "type": "string"
+                                            },
+                                            "position": {
+                                                "type": "integer"
+                                            },
+                                            "type": {
+                                                "description": "Todos vão ter o valor 'secundary'",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [ "is_lead_candidate", "name", "position", "type" ]
+                                    }
+                                },
+                                "secundary": {
+                                    "description": "Lista de todos os candidatos suplentes",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "is_lead_candidate": {
+                                                "description": "Todos vão ter o valor 'false'",
+                                                "type": "boolean"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "position": {
+                                                "type": "integer"
+                                            },
+                                            "type": {
+                                                "description": "Todos vão ter o valor 'secundary'",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [ "is_lead_candidate", "name", "position", "type" ]
+                                    }
+                                }
+                            },
+                            "required": [ "main", "secundary" ]
+                        }
+                    },
+                    "description" : {
+                        "type": "string"
+                    },
+                    "description_source" : {
+                        "type": "string"
+                    },
+                    "email" : {
+                        "type": "string"
+                    },
+                    "facebook" : {
+                        "type": "string"
+                    },
+                    "instagram" : {
+                        "type": "string"
+                    },
+                    "logo" : {
+                        "description": "Nome do ficheiro na pasta 'partidos_logos'",
+                        "type": "string"
+                    },
+                    "name" : {
+                        "type": "string"
+                    },
+                    "twitter" : {
+                        "type": "string"
+                    },
+                    "website" : {
+                        "type": "string"
+                    }
+                },
+                "required": [ "candidates", "description", "description_source", "email", "facebook", "instagram", "logo", "name", "twitter", "website" ]
+            }
+        }
+      }
+    },
+    "required": [ "manifestos", "parties" ]
+  }
